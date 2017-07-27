@@ -5,12 +5,13 @@ import {
 } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import schema from './data/schema';
 
 const GRAPHQL_PORT = 4000;
 
-const MONGO_URI = 'your mongodb uri';
+const MONGO_URI = 'mongodb://helio:druide@ds119223.mlab.com:19223/lyrics-helio';
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
@@ -22,6 +23,7 @@ mongoose.connection
   .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 const graphQLServer = express();
+graphQLServer.use('*', cors({ origin: 'http://localhost:3001' }));
 
 graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
