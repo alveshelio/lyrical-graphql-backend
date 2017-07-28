@@ -24,9 +24,7 @@ LyricSchema.statics.like = function (id) {
 LyricSchema.statics.findSong = function (id) {
   return this.findById(id)
     .populate()
-    .then(lyric => {
-      Song.find(lyric.song);
-    });
+    .then(lyric => Song.find(lyric.song));
 };
 
 const Lyric = mongoose.model('lyric', LyricSchema);

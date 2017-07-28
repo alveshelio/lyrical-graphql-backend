@@ -30,6 +30,11 @@ SongSchema.statics.findLyric = async function (id) {
   return Lyric.find({ _id: { $in: song.lyrics } });
 };
 
+SongSchema.statics.deleteSongLyrics = function (id) {
+  // const song = await this.findById(id);
+  return Lyric.deleteMany({ song: id });
+};
+
 const Song = mongoose.model('song', SongSchema);
 
 export default Song;

@@ -38,6 +38,12 @@ const resolvers = {
     async addSong(root, args) {
       return new Song(args).save();
     },
+    async deleteSong(root, args) {
+      return Song.findByIdAndRemove(args.id);
+    },
+    async addLyricToSong(root, args) {
+      return Song.addLyric(args.songId, args.content);
+    },
   },
 };
 

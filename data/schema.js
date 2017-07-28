@@ -16,12 +16,15 @@ type Lyric {
 }
 type Query {
   songs: [Song]
-  song(id: String): Song
+  song(id: String!): Song
   lyrics: [Lyric]
   lyric(id: String): Lyric
 }
 type Mutation {
-  addSong(title: String!): Song
+  addSong(title: String): Song
+  addLyricToSong(songId: String, content: String): Lyric
+  deleteSong(id: String): Song
+  deleteLyricFromSong(id: String): Lyric
  }
 `;
 
