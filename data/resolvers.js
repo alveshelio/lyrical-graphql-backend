@@ -44,6 +44,9 @@ const resolvers = {
     async addLyricToSong(root, args) {
       return Song.addLyric(args.songId, args.content);
     },
+    async likeLyric(root, args) {
+      return Lyric.like(args.id);
+    },
   },
 };
 
