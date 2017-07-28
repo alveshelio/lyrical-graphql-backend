@@ -22,9 +22,10 @@ type Query {
 }
 type Mutation {
   addSong(title: String): Song
-  addLyricToSong(songId: String, content: String): Lyric
+  addLyricToSong(songId: String, content: String): Song
   deleteSong(id: String): Song
   deleteLyricFromSong(id: String): Lyric
+  likeLyric(id: String): Lyric
  }
 `;
 
