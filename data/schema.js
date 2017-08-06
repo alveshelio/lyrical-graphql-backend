@@ -5,7 +5,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 const typeDefs = `
 type Song {
   id: ID!
-  title: String!
+  title: String
   lyrics: [Lyric]
 }
 type Lyric {
